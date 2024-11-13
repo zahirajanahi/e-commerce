@@ -21,6 +21,27 @@ class AdminController extends Controller
 
         return view('dashboard.admin_dashboard', compact('users' , 'roles','products'));
     }
+  
+
+    public function home(){
+        $users = User::wherenot('id', 1 )->get();
+        $roles = Role::wherenot("name" , "admin")->get();
+        $products = Product::all();
+        return view('home.home', compact('users' , 'roles','products'));
+    }
+    
+    // public function users(){
+    //     $users = User::wherenot('id', 1 )->get();
+    //     $roles = Role::wherenot("name" , "admin")->get();
+    //     $products = Product::all();
+    //     return view('dashboard.partials.users_table', compact('users' , 'roles','products'));
+    // }
+    // public function products(){
+    //     $users = User::wherenot('id', 1 )->get();
+    //     $roles = Role::wherenot("name" , "admin")->get();
+    //     $products = Product::all();
+    //     return view('dashboard.partials.product_table', compact('users' , 'roles','products'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -97,4 +118,5 @@ class AdminController extends Controller
 
         return back();
     }
+    
 }

@@ -37,7 +37,7 @@
                         type="file" class="w-full">
                 </div>
             </div>
-            <button class="w-full py-2 bg-gray-800 rounded-lg text-white mt-2">Create Product</button>
+            <button class="w-full py-2 bg-[#3e3121] rounded-lg text-white mt-2">Create Product</button>
         </form>
     </div>
 </div>

@@ -18,12 +18,18 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(["auth", "role:admin,moderator" , "notDeleted"])->group(function () {
+    Route::get('/', [AdminController::class, 'home'])->name('home');
+    // Route::get('/users', [AdminController::class, 'users'])->name('users');
+    // Route::get('/products', [AdminController::class, 'products'])->name('products');
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::put('/switch-role/{user}', [AdminController::class, 'moderator'])->name('moderator');
     Route::put('/block/{user}', [AdminController::class, 'block'])->name('block');
     Route::put('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
     Route::delete('/product/destroy/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('/dashboard/users', [AdminController::class, 'loadUsers'])->name('dashboard.users');
+    Route::get('/dashboard/products', [AdminController::class, 'loadProducts'])->name('dashboard.products');
+
 });
 
 
